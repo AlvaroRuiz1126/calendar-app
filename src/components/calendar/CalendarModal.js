@@ -17,8 +17,11 @@ const customStyles = {
     transform: 'translate(-50%, -50%)'
   }
 };
-//el id appElement es el root del index.js
-Modal.setAppElement('#root');
+
+if(process.env.NODE_ENV !== 'test'){
+  //el id appElement es el root del index.js
+  Modal.setAppElement('#root');
+}
 
 const startDate = moment().minutes(0).seconds(0).add(1, 'hours');
 const endDate = startDate.clone().add(1, 'hours');
@@ -136,6 +139,7 @@ export const CalendarModal = ({modalOpen}) => {
       //una clase para el fondo detras del modal
       overlayClassName="modal-fondo"
       contentLabel="Example Modal"
+      ariaHideApp={!process.env.NODE_ENV === 'test'}
     >
       <h1> {(activeEvent) ? 'Editar Evento' : 'Nuevo Evento'} </h1>
       <hr />

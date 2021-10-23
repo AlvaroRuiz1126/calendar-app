@@ -26,7 +26,7 @@ export const startRegister = (email, password, name) => {
     return async(dispatch) => {
         const resp = await fetchWhithoutToken('auth/new', {email, password, name}, 'POST');
         const body = await resp.json();
-        console.log(body);
+        //console.log(body);
 
         if(body.ok){
             localStorage.setItem('token', body.token);
@@ -45,7 +45,7 @@ export const startChecking = () => {
     return async(dispatch) => {
         const resp = await fetchWhithToken('auth/renew');
         const body = await resp.json();
-        console.log(body);
+        //console.log(body);
 
         if(body.ok){
             localStorage.setItem('token', body.token);
